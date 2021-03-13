@@ -2,9 +2,9 @@
 ARG VARIANT=7
 FROM mcr.microsoft.com/vscode/devcontainers/php:0-${VARIANT}
 
-# Install MariaDB client
+# Install MariaDB client and PHP Extensions
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
-    && apt-get install -y mariadb-client \ 
+    && apt-get install -y mariadb-client php-gd \
     && apt-get clean -y && rm -rf /var/lib/apt/lists/*
 
 # Update args in docker-compose.yaml to set the UID/GID of the "vscode" user.
